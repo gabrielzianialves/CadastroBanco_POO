@@ -1,10 +1,21 @@
 package classes;
 
 public class Pessoa {
+    // atributos
     private String nome;
     private String endereco;
-    private int telefone;
-    private int cpf;
+    private String telefone;
+    private String cpf;
+
+    // construtor
+    public Pessoa(String nome, String endereco, String telefone, String cpf){
+        this.nome = nome;
+        this.endereco = endereco;
+        this.telefone = telefone;
+        this.cpf = cpf;
+    }
+
+    // métodos get e set para os atributos
 
     public String getNome() {
         return nome;
@@ -22,19 +33,20 @@ public class Pessoa {
         this.endereco = endereco;
     }
 
-    public int getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(int telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 
-    public int getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
+
 }

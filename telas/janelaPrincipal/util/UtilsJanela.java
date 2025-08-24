@@ -3,6 +3,7 @@ package telas.janelaPrincipal.util;
 import java.awt.*;
 
 public class UtilsJanela {
+    // método para centralizar a janela
     public static void centralizar(Frame janela) {
         Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension tamanho = janela.getSize();
