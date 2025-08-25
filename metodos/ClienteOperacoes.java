@@ -2,6 +2,8 @@ package metodos;
 
 import classes.Cliente;
 import classes.Conta;
+import classes.ContaCorrente;
+import classes.ContaPoupanca;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import telas.janelaPrincipal.componentes.*;
@@ -28,20 +30,23 @@ public class ClienteOperacoes implements Metodos {
             return;
         }
 
-        // cria um novo objeto cliente e um objeto conta e armazena as informações com os métodos set
-        Conta novaConta = new Conta(null, null, 0);
-        Cliente novoCliente = new Cliente(null,null,null,null, novaConta);
-        novoCliente.setNome(nomeDigitado);
-        novoCliente.setEndereco(enderecoDigitado);
-        novoCliente.setTelefone(telefoneDigitado);
-        novoCliente.setCpf(cpfDigitado);
-        novaConta.setAgencia(agenciaDigitada);
-        novaConta.setNumero(numeroContaDigitado);
+        // cria um novo objeto conta e armazena as informações
+        Conta novaConta;
+        if (ContasRadioButtons.jrbCorrente.isSelected()) {
+            novaConta = new ContaCorrente(agenciaDigitada, numeroContaDigitado, 0);
+        }
+        else{
+            novaConta = new ContaPoupanca(agenciaDigitada, numeroContaDigitado, 0);
+        }
 
+        Cliente novoCliente = new Cliente(nomeDigitado, enderecoDigitado, telefoneDigitado, cpfDigitado, novaConta);
         clientes.add(novoCliente); // adiciona o novo cliente no array list
-        JOptionPane.showMessageDialog(null, "Dados registrados.");
+
+        String tipoConta = (novaConta instanceof ContaCorrente) ? "Conta Corrente" : "Conta Poupança";
+
+        JOptionPane.showMessageDialog(null, "\nDados registrados.");
         System.out.println("Cliente cadastrado com sucesso.\n");
-        System.out.println("Agência: "+ novaConta.getAgencia() +"\nNúmero da Conta: " + novaConta.getNumero() + "\nNome: "+ novoCliente.getNome() +"\nEndereço: " + novoCliente.getEndereco() + "\nTelefone: "+ novoCliente.getTelefone() +"\nCPF: " + novoCliente.getCpf());
+        System.out.println("\nTipo de Conta: " + tipoConta +"\nAgência: "+ novaConta.getAgencia() +"\nNúmero da Conta: " + novaConta.getNumero() + "\nNome: "+ novoCliente.getNome() +"\nEndereço: " + novoCliente.getEndereco() + "\nTelefone: "+ novoCliente.getTelefone() +"\nCPF: " + novoCliente.getCpf());
         
     }
 

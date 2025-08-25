@@ -2,7 +2,6 @@ package telas.janelaInicial;
 
 import java.awt.event.*;
 import java.text.ParseException;
-
 import javax.swing.*;
 import metodos.ClienteOperacoes;
 import telas.janelaConsulta.JanelaConsulta;

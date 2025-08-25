@@ -1,11 +1,13 @@
 package telas.janelaConsulta;
 
 import classes.Cliente;
+import classes.ContaCorrente;
 import java.awt.event.*;
 import javax.swing.*;
 import metodos.ClienteOperacoes;
 import telas.janelaInicial.JanelaInicial;
 import telas.janelaPrincipal.util.*;
+
 
 public class JanelaConsulta extends JFrame {
 
@@ -51,14 +53,24 @@ public class JanelaConsulta extends JFrame {
                         }
                     }
                     if (clienteEncontrado != null) {
-                        JOptionPane.showMessageDialog(null, "Nome: " + clienteEncontrado.getNome() + "\nEndereço: " + clienteEncontrado.getEndereco() + "\nTelefone: " + clienteEncontrado.getTelefone() + "\nCPF: " + clienteEncontrado.getCpf(), "Informações do Cliente", JOptionPane.INFORMATION_MESSAGE);
+                        String tipoConta;
+                        if (clienteEncontrado.getConta() instanceof ContaCorrente){
+                            tipoConta = "Conta Corrente";
+                        }
+                        else {
+                            tipoConta = "Conta Poupança";
+                        }
+                        
+                        String agencia = clienteEncontrado.getConta().getAgencia();
+                        String numeroConta = clienteEncontrado.getConta().getNumero();
+
+                        JOptionPane.showMessageDialog(null, "\nTipo de Conta: " + tipoConta+"\nAgência: "+ agencia +"\nNúmero da Conta: " + numeroConta + "\nNome: " + clienteEncontrado.getNome() + "\nEndereço: " + clienteEncontrado.getEndereco() + "\nTelefone: " + clienteEncontrado.getTelefone() + "\nCPF: " + clienteEncontrado.getCpf(), "Informações do Cliente", JOptionPane.INFORMATION_MESSAGE);
                     }
-                    else{
-                        JOptionPane.showMessageDialog(null, "Cliente não encontrado.", "Erro", JOptionPane.ERROR_MESSAGE);
-                    }
+
                 }
             }
         });
+        
         
         botaoVoltar.setBounds(10, 10, 45, 20);
         titulo.setBounds(105, 40, 200, 30);

@@ -32,16 +32,4 @@ public class ContasRadioButtons {
         bgContas.add(jrbPoupanca);
     }
 
-    // get para retornar o que foi selecionado
-
-    public static String getTipoConta() {
-        if (jrbCorrente.isSelected()){
-            return "Conta Corrente.";
-        } 
-        else if (jrbPoupanca.isSelected()){
-            return "Conta Poupança.";
-        }
-        return null;
-    }
-
 }
