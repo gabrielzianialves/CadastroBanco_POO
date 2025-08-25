@@ -13,7 +13,7 @@ public class ClienteOperacoes implements Metodos {
 
     // método para cadastrar um novo cliente
     @Override
-    public void gravar () {
+    public void gravar() {
         //armazena o que foi digitado nos campos em variáveis
         String agenciaDigitada = CamposConta.getAgenciaDigitada();
         String numeroContaDigitado = CamposConta.getNumeroContaDigitado();
@@ -47,7 +47,7 @@ public class ClienteOperacoes implements Metodos {
 
     //método para editar um cliente
     @Override
-    public void editar () {
+    public void editar() {
 
         // armazena o que foi digitado nos campos em variáveis
         String agenciaDigitada = CamposConta.getAgenciaDigitada();
@@ -87,7 +87,7 @@ public class ClienteOperacoes implements Metodos {
 
     //método para excluir um cliente
     @Override
-    public void excluir () {
+    public void excluir() {
         //armazena o que foi digitado nos campos em variáveis
         String agenciaDigitada = CamposConta.getAgenciaDigitada();
         String numeroContaDigitado = CamposConta.getNumeroContaDigitado();

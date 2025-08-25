@@ -18,7 +18,7 @@ public class Botoes {
             @Override
             public void actionPerformed(ActionEvent e) {
                 janela.dispose(); // fecha a janela atual
-                new JanelaInicial().setVisible(true); // abre a janela inicial
+                new JanelaInicial(operacoes).setVisible(true); // abre a janela inicial
             }
         });
 

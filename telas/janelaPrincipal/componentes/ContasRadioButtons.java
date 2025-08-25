@@ -36,12 +36,12 @@ public class ContasRadioButtons {
 
     public static String getTipoConta() {
         if (jrbCorrente.isSelected()){
-            return "Tipo de conta selecionada: Conta Corrente.";
+            return "Conta Corrente.";
         } 
         else if (jrbPoupanca.isSelected()){
-            return "Tipo de conta selecionada: Conta Poupança.";
+            return "Conta Poupança.";
         }
-        return "Nenhum tipo de conta foi selecionado.";
+        return null;
     }
 
 }

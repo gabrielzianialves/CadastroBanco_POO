@@ -1,6 +1,10 @@
 package telas.janelaPrincipal.componentes;
 
+import java.text.ParseException;
+
 import javax.swing.*;
+import javax.swing.text.MaskFormatter;
+
 import telas.janelaPrincipal.Janela;
 
 public class CamposCliente {
@@ -12,7 +16,7 @@ public class CamposCliente {
     public static JTextField jtfCpf;
 
 
-    public static void adicionar(Janela janela) {
+    public static void adicionar(Janela janela) throws ParseException {
 
         // criação dos labels e campos para inserir as informações do cliente
 
@@ -41,7 +45,9 @@ public class CamposCliente {
         jlTelefone.setHorizontalAlignment(SwingConstants.RIGHT);
         janela.getContentPane().add(jlTelefone);
 
-        jtfTelefone = new JTextField();
+        MaskFormatter mascaraTelefone = new MaskFormatter("(##) #####-####");
+        mascaraTelefone.setPlaceholderCharacter('_');
+        jtfTelefone = new JFormattedTextField(mascaraTelefone);
         jtfTelefone.setBounds(75, 100, 300, 20);
         janela.getContentPane().add(jtfTelefone);
 
@@ -50,7 +56,9 @@ public class CamposCliente {
         jlCpf.setBounds(45, 125, 60, 18);
         janela.getContentPane().add(jlCpf);
 
-        jtfCpf = new JTextField();
+        MaskFormatter mascaraCPF = new MaskFormatter("###.###.###-##");
+        mascaraCPF.setPlaceholderCharacter('_');
+        jtfCpf = new JFormattedTextField(mascaraCPF);
         jtfCpf.setBounds(75, 125, 300, 20);
         janela.getContentPane().add(jtfCpf);
 

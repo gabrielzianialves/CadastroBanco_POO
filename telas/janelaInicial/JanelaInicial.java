@@ -1,16 +1,22 @@
 package telas.janelaInicial;
 
 import java.awt.event.*;
-import javax.swing.*;
+import java.text.ParseException;
 
+import javax.swing.*;
 import metodos.ClienteOperacoes;
 import telas.janelaConsulta.JanelaConsulta;
 import telas.janelaPrincipal.Janela;
 import telas.janelaPrincipal.util.*;
 
 public class JanelaInicial extends JFrame {
-    public JanelaInicial() {
+
+    private ClienteOperacoes operacoes;
+
+    public JanelaInicial(ClienteOperacoes operacoes) {
         super("Tela Inicial");
+
+        this.operacoes = operacoes;
         setSize(400, 255);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -31,7 +37,12 @@ public class JanelaInicial extends JFrame {
             @Override
             public void actionPerformed(ActionEvent evento){
                 dispose(); // fecha a tela atual
-                new Janela().setVisible(true); //abre a outra janela
+                try{
+                    new Janela(operacoes).setVisible(true); //abre a outra janela
+                } 
+                catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -40,7 +51,6 @@ public class JanelaInicial extends JFrame {
             @Override
             public void actionPerformed(ActionEvent evento){
                 dispose(); // fecha a tela atual
-                ClienteOperacoes operacoes = new ClienteOperacoes();  
                 new JanelaConsulta(operacoes).setVisible(true); //abre a outra janela
             }
         });
@@ -63,7 +73,8 @@ public class JanelaInicial extends JFrame {
 
     public static void main(String[] args) {
 
-        JanelaInicial janelaInicial = new JanelaInicial();
+        ClienteOperacoes operacoes = new ClienteOperacoes(); 
+        JanelaInicial janelaInicial = new JanelaInicial(operacoes); 
         janelaInicial.setVisible(true);
     }
 }

@@ -20,23 +20,19 @@ public class JanelaConsulta extends JFrame {
 
         
         JButton botaoVoltar = new JButton("<");
-        botaoVoltar.setBounds(10, 10, 45, 20);
         botaoVoltar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose(); // fecha a janela atual
-                new JanelaInicial().setVisible(true); // abre a janela inicial
+                new JanelaInicial(operacoes).setVisible(true); // abre a janela inicial
             }
         });
 
+        JLabel titulo = new JLabel("Consultar Clientes Cadastrados");
 
         JComboBox<String> comboClientes = new JComboBox<>();
-        JLabel labelNome = new JLabel("Nome: ");
-        JLabel labelEndereco = new JLabel("Endereço: ");
-        JLabel labelTelefone = new JLabel("Telefone: ");
-        JLabel labelCpf = new JLabel("CPF: ");
 
-        comboClientes.removeAllItems();
+        // adiciona os clientes cadastrados no combo box
         for (Cliente c : operacoes.getClientes()) {
             comboClientes.addItem(c.getNome());
         }
@@ -55,10 +51,6 @@ public class JanelaConsulta extends JFrame {
                         }
                     }
                     if (clienteEncontrado != null) {
-                        labelNome.setText("Nome: "+ clienteEncontrado.getNome());
-                        labelEndereco.setText("Endereço: "+ clienteEncontrado.getEndereco());
-                        labelTelefone.setText("Telefone: "+ clienteEncontrado.getTelefone());
-                        labelCpf.setText("CPF: "+ clienteEncontrado.getCpf());
                         JOptionPane.showMessageDialog(null, "Nome: " + clienteEncontrado.getNome() + "\nEndereço: " + clienteEncontrado.getEndereco() + "\nTelefone: " + clienteEncontrado.getTelefone() + "\nCPF: " + clienteEncontrado.getCpf(), "Informações do Cliente", JOptionPane.INFORMATION_MESSAGE);
                     }
                     else{
@@ -67,11 +59,14 @@ public class JanelaConsulta extends JFrame {
                 }
             }
         });
-
-        comboClientes.setBounds(50, 50, 300, 30);
-        botaoDados.setBounds(125, 100, 150, 30);
+        
+        botaoVoltar.setBounds(10, 10, 45, 20);
+        titulo.setBounds(105, 40, 200, 30);
+        comboClientes.setBounds(40, 90, 300, 30);
+        botaoDados.setBounds(115, 150, 150, 30);
 
         add(botaoVoltar);
+        add(titulo);
         add(comboClientes);
         add(botaoDados);
 
